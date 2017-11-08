@@ -1,0 +1,12 @@
+D:\my whole prgaram\Shrikrishna\Shrikrishna\Shrikrishna\bin\Shrikrishna.dll.config
+D:\my whole prgaram\Shrikrishna\Shrikrishna\Shrikrishna\bin\Shrikrishna.dll
+D:\my whole prgaram\Shrikrishna\Shrikrishna\Shrikrishna\bin\Shrikrishna.pdb
+D:\my whole prgaram\Shrikrishna\Shrikrishna\Shrikrishna\obj\Debug\Shrikrishna.dll
+D:\my whole prgaram\Shrikrishna\Shrikrishna\Shrikrishna\obj\Debug\Shrikrishna.pdb
+D:\my whole prgaram\Shrikrishna\Shrikrishna\Shrikrishna\obj\Debug\Shrikrishna.csprojResolveAssemblyReference.cache
+G:\Shrikrishna\Shrikrishna\bin\Shrikrishna.dll.config
+G:\Shrikrishna\Shrikrishna\bin\Shrikrishna.dll
+G:\Shrikrishna\Shrikrishna\bin\Shrikrishna.pdb
+G:\Shrikrishna\Shrikrishna\obj\Debug\Shrikrishna.csprojResolveAssemblyReference.cache
+G:\Shrikrishna\Shrikrishna\obj\Debug\Shrikrishna.dll
+G:\Shrikrishna\Shrikrishna\obj\Debug\Shrikrishna.pdb
