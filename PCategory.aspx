@@ -21,15 +21,29 @@
               <!-- Horizontal Form -->
               <div class="box box-info">
                 <div class="box-header with-border">
-                  <h3 class="box-title">Category Details</h3>
+                  <h3 class="box-title">New Products</h3>
                 </div><!-- /.box-header -->
                 <!-- form start -->
                 <form class="form-horizontal">
                   <div class="box-body">
-                    <div class="form-group">
-                      <label for="inputEmail3" class="col-sm-2 control-label">Name</label>
+                      <div class="form-group">
+                      <label for="inputEmail3" class="col-sm-2 control-label">Select Product Name</label>
                       <div class="col-sm-10">
-                          <asp:TextBox ID="txtproductcategory" runat="server" class="form-control" placeholder="Enter New Product Category"></asp:TextBox> 
+                           <asp:DropDownList ID="ddlproductname" class="form-control" runat="server" palceholder="Chosse GST Rate" AutoPostBack="True" OnSelectedIndexChanged="ddlproductname_SelectedIndexChanged"></asp:DropDownList> 
+                      <asp:TextBox ID="Txtnewproduct" runat="server" class="form-control" placeholder="Enter New Product Name" ></asp:TextBox>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label for="inputEmail3" class="col-sm-2 control-label">Sub Type Name</label>
+                      <div class="col-sm-10">
+                          <asp:DropDownList ID="ddlsubtype" class="form-control" runat="server" palceholder="Chosse GST Rate" AutoPostBack="True" OnSelectedIndexChanged="ddlsubtype_SelectedIndexChanged" ></asp:DropDownList>
+                          <asp:TextBox ID="txtproductcategory" runat="server" class="form-control" placeholder="Enter Sub Product Type"></asp:TextBox> 
+                      </div>
+                    </div>
+                      <div class="form-group">
+                      <label for="inputEmail3" class="col-sm-2 control-label">Type</label>
+                      <div class="col-sm-10">
+                       <asp:DropDownList ID="ddltxttype" class="form-control" runat="server" palceholder="Chosse GST Rate" AutoPostBack="True" OnSelectedIndexChanged="ddltxttype_SelectedIndexChanged" ></asp:DropDownList>
                       </div>
                     </div>
                       <div class="form-group">
@@ -41,7 +55,15 @@
                       <div class="form-group">
                       <label for="inputEmail3" class="col-sm-2 control-label">GST Rate</label>
                       <div class="col-sm-10">
-                          <asp:DropDownList ID="ddlgstrate" class="form-control" runat="server" palceholder="Chosse GST Rate"></asp:DropDownList>
+                          <asp:TextBox ID="txtgstrate" runat="server" class="form-control" placeholder="Enter GST Rate"></asp:TextBox>
+                      </div>
+                    </div>
+                     
+                       <div class="form-group">
+                      <label for="inputEmail3" class="col-sm-2 control-label">Rate</label>
+                      <div class="col-sm-10">
+                          
+                          <asp:TextBox ID="txtrate" runat="server" class="form-control" placeholder="Enter Rate"></asp:TextBox>
                       </div>
                     </div>
                       
@@ -67,11 +89,14 @@
                     <div class="form-group">
                       <div class="col-sm-12" style="text-align:center">
                           <center>
-                          <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" BackColor="White" BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="1px" CellPadding="3" OnRowCommand="GridView1_RowCommand" Width="402px" AllowPaging="True" OnPageIndexChanging="GridView1_PageIndexChanging" PageSize="8">
+                          <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" BackColor="White" BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="1px" CellPadding="3" OnRowCommand="GridView1_RowCommand" Width="402px" AllowPaging="True" OnPageIndexChanging="GridView1_PageIndexChanging" PageSize="5">
                               <Columns>
-                                  <asp:BoundField DataField="pcategory" HeaderText="P. Category" />
+                                  <asp:BoundField DataField="Name" HeaderText="Main Pro. Name" />
+                                  <asp:BoundField DataField="pcategory" HeaderText="Sub Type" />
                                   <asp:BoundField DataField="hsncode" HeaderText="HSN CODE" />
+                                  <asp:BoundField DataField="Type" HeaderText="Type" />
                                   <asp:BoundField DataField="gstrate" HeaderText="GST Rate" />
+                                  <asp:BoundField DataField="Rate" HeaderText="Rate" />
                                   <asp:TemplateField HeaderText="Edit">
                                       <ItemTemplate>
                                           <asp:Button ID="btnedit" runat="server" CommandArgument='<%# Eval("sr") %>' Text="Edit" CommandName="recordedit" />

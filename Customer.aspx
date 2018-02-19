@@ -29,11 +29,18 @@
                         <asp:TextBox ID="txtAddress" runat="server" class="form-control" placeholder="Enter Address"></asp:TextBox>   
                       </div>
                     </div>
+                     
+                         <div class="form-group">
+                      <label for="inputEmail3" class="col-sm-2 control-label"> P.O.S (Address)</label>
+                      <div class="col-sm-10">
+                        <asp:TextBox ID="txtsupplyaddress" runat="server" class="form-control" placeholder="Enter Place of Supply.(Address)"></asp:TextBox>   
+                      </div>
+                    </div>
+
                       <div class="form-group">
                       <label for="inputEmail3" class="col-sm-2 control-label">GST No</label>
                       <div class="col-sm-10">
-                          
-                       <asp:TextBox ID="Txtgstno" runat="server" class="form-control" placeholder="Enter GST No" ></asp:TextBox>   
+                      <asp:TextBox ID="Txtgstno" runat="server" class="form-control" placeholder="Enter GST No" ></asp:TextBox>   
                       </div>
                     </div>
                          <div class="form-group">
@@ -46,6 +53,18 @@
                       <label for="inputEmail3" class="col-sm-2 control-label">Contact</label>
                       <div class="col-sm-10">
                         <asp:TextBox ID="Txtcontact" runat="server" class="form-control" placeholder="Enter Contact"></asp:TextBox>   
+                      </div>
+                    </div>
+                      <div class="form-group">
+                      <label for="inputEmail3" class="col-sm-2 control-label">State</label>
+                      <div class="col-sm-10">
+                        <asp:TextBox ID="Txtstate" runat="server" class="form-control" placeholder="Enter State"></asp:TextBox>   
+                      </div>
+                    </div>
+                      <div class="form-group">
+                      <label for="inputEmail3" class="col-sm-2 control-label">State Code</label>
+                      <div class="col-sm-10">
+                        <asp:TextBox ID="Txtstatecode" runat="server" class="form-control" placeholder="Enter State Code"></asp:TextBox>   
                       </div>
                     </div>
                       
@@ -78,6 +97,7 @@
                                   <asp:BoundField DataField="gst_no" HeaderText="GST NO" />
                                   <asp:BoundField DataField="email" HeaderText="EMAIL" />
                                   <asp:BoundField DataField="contact" HeaderText="CONTACT" />
+                                  <asp:BoundField DataField="state" HeaderText="State" />
                                   <asp:TemplateField HeaderText="Edit">
                                       <ItemTemplate>
                                           <asp:Button ID="btnedit" runat="server" CommandArgument='<%# Eval("id") %>' Text="Edit" CommandName="recordedit" />

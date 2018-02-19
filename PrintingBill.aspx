@@ -1,30 +1,8 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site1.Master" AutoEventWireup="true" CodeBehind="BIIING.aspx.cs" Inherits="Shrikrishna.BIIING" EnableEventValidation="false" ValidateRequest="false" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site1.Master" AutoEventWireup="true" CodeBehind="PrintingBill.aspx.cs" Inherits="Shrikrishna.PrintingBill" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-     <style type="text/css">
-        .auto-style2 {
-            height: 20px;
-        }
-        .auto-style4 {
-            width: 182px;
-        }
-        .auto-style5 {
-            width: 105px;
-            height: 112px;
-             margin-left: 5px;
-         }
-        .auto-style8 {
-            width: 400px
-        }
-        .auto-style9 {
-            width: 89px;
-        }
-         .auto-style10 {
-             width: 251px;
-         }
-         </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-     <script>
+        <script>
         
     function printpage() {
         
@@ -33,17 +11,7 @@
     }
 
     </script>
-    
-              <!-- Horizontal Form -->
-             
-              
-                  <form class="form-horizontal">
-                         <div class="box-body">
-                    <div class="form-group">
-                      <div class="col-sm-12" style="text-align:center">
-                          <center>
-                          
-                             <asp:Panel ID="Panel1" runat="server">
+    <asp:Panel ID="Panel1" runat="server">
 
                                  <table style="width:100%;" border="1">
                                      <tr>
@@ -84,16 +52,12 @@
                                              State Code -<asp:Label ID="Label8" runat="server" Text="Label"></asp:Label><br />
                                          </td>
                                          <td><table style="width:100%;" border="1">
-                                             <tr><td class="auto-style4">Transporting;</td><td>
-                                                 <asp:Label ID="Label11" runat="server" Text="Label"></asp:Label>
-                                                 </td></tr>
-                                             <tr><td class="auto-style4">LR No.</td><td>
-                                                 <asp:Label ID="Label12" runat="server" Text="Label"></asp:Label>
-                                                 </td></tr>
-                                             <tr><td class="auto-style4">D.M No. </td><td>P.O No. </td></tr>
-                                             <tr><td class="auto-style4"><asp:Label ID="lbldmno" runat="server" Text="Label"></asp:Label> </td><td><asp:Label ID="lblpono" runat="server"></asp:Label> </td></tr>
-                                             <tr><td class="auto-style4">D.M Date </td><td>P.O Date</td></tr>
-                                             <tr><td class="auto-style4"><asp:Label ID="lbldmdate" runat="server" Text="D.M Date"></asp:Label></td><td><asp:Label ID="lblpodate" runat="server" Text="    "></asp:Label> </td></tr>
+                                             <tr><td class="auto-style4">Transporting;</td><td>&nbsp;</td></tr>
+                                             <tr><td class="auto-style4">LR No.</td><td>&nbsp;</td></tr>
+                                             <tr><td>D.M No. </td><td>P.O No. </td></tr>
+                                             <tr><td><asp:Label ID="lbldmno" runat="server" Text="Label"></asp:Label> </td><td><asp:Label ID="lblpono" runat="server" Text="Label"></asp:Label> </td></tr>
+                                             <tr><td>D.M Date </td><td>P.O Date</td></tr>
+                                             <tr><td><asp:Label ID="lbldmdate" runat="server" Text="Label"></asp:Label></td><td><asp:Label ID="lblpodate" runat="server" Text="Label"></asp:Label> </td></tr>
                                              <tr><td class="auto-style4">INVOICE No.</td>
                                                  <td class="auto-style4" style="text-align:center">Date</td></tr>
                                              <tr><td class="auto-style4" style="text-align:center"><asp:Label ID="Label9" runat="server" Text="Label" Font-Bold="True"></asp:Label></td><td  style="text-align:center"><asp:Label ID="Label10" runat="server" Text="Label"></asp:Label></td></tr>
@@ -154,22 +118,7 @@
                                  </table>
 
                              </asp:Panel>
-                         </center>
-                      </div>
-                    </div>
-                  </div><!-- /.box-body -->
-                      <div class="col-sm-12" style="text-align:right">
-                        <div class="box-footer">
-                      <right>
-                      <asp:Button ID="btnbill" runat="server"  class="btn btn-success" Text="Bill Print"  OnClick="btnbill_Click1" OnClientClick="return printpage();"/>
-                                         </right>
-                  </div><!-- /.box-footer -->
-                          </div>
-                    
-            
-              <!-- general form elements disabled -->
-    <
-           
-            </form>
-         
+    <div>
+        <asp:Button ID="btnbill" runat="server"  class="btn btn-success" Text="Bill Print" OnClientClick="return printpage();" OnClick="btnbill_Click1" />
+    </div>
 </asp:Content>

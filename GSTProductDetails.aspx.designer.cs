@@ -10,43 +10,34 @@
 namespace Shrikrishna {
     
     
-    public partial class VDetails {
+    public partial class GSTdetails {
         
         /// <summary>
-        /// txtvehicelno control.
+        /// txtTypename control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtvehicelno;
+        protected global::System.Web.UI.WebControls.TextBox txtTypename;
         
         /// <summary>
-        /// txtlrno control.
+        /// txthsncode control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtlrno;
+        protected global::System.Web.UI.WebControls.TextBox txthsncode;
         
         /// <summary>
-        /// ddlnot1 control.
+        /// txtgstrate control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlnot1;
-        
-        /// <summary>
-        /// Txtnot control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox Txtnot;
+        protected global::System.Web.UI.WebControls.TextBox txtgstrate;
         
         /// <summary>
         /// Label1 control.

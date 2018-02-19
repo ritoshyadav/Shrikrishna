@@ -1,8 +1,8 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site1.Master" AutoEventWireup="true" CodeBehind="VDetails.aspx.cs" Inherits="Shrikrishna.VDetails" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site1.Master" AutoEventWireup="true" CodeBehind="GSTProductDetails.aspx.cs" Inherits="Shrikrishna.GSTdetails" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <style type="text/css">
         .auto-style1 {
-            margin-top: 23px;
+            margin-top: 24px;
         }
     </style>
 </asp:Content>
@@ -11,30 +11,31 @@
               <!-- Horizontal Form -->
               <div class="box box-info">
                 <div class="box-header with-border">
-                  <h3 class="box-title">Vehicel Details</h3>
+                  <h3 class="box-title">Types Details Of Product</h3>
                 </div><!-- /.box-header -->
                 <!-- form start -->
                 <form class="form-horizontal">
                   <div class="box-body">
                     <div class="form-group">
-                      <label for="inputEmail3" class="col-sm-2 control-label">Vehicel No</label>
+                      <label for="inputEmail3" class="col-sm-2 control-label">Type Name</label>
                       <div class="col-sm-10">
-                          <asp:TextBox ID="txtvehicelno" runat="server" class="form-control" placeholder="Enter Vehicel No"></asp:TextBox> 
+                      <asp:TextBox ID="txtTypename" runat="server" class="form-control" placeholder="Enter Type Name" ></asp:TextBox>
                       </div>
                     </div>
                       <div class="form-group">
-                      <label for="inputEmail3" class="col-sm-2 control-label">LR. No</label>
+                      <label for="inputEmail3" class="col-sm-2 control-label"> HSNCODE</label>
                       <div class="col-sm-10">
-                        <asp:TextBox ID="txtlrno" runat="server" class="form-control" placeholder="Enter LR. No"></asp:TextBox>   
+                          <asp:TextBox ID="txthsncode" runat="server" class="form-control" placeholder="Enter HSNCODE" ></asp:TextBox>
                       </div>
                     </div>
-                      <div class="form-group">
-                      <label for="inputEmail3" class="col-sm-2 control-label">Name Of Transport</label>
+                       <div class="form-group">
+                      <label for="inputEmail3" class="col-sm-2 control-label"> GST Rate</label>
                       <div class="col-sm-10">
-                          <asp:DropDownList ID="ddlnot1" class="form-control" runat="server" palceholder="Chosse Product Category" AutoPostBack="True" OnSelectedIndexChanged="Page_Load"></asp:DropDownList>
-                       <asp:TextBox ID="Txtnot" runat="server" class="form-control" placeholder="Enter Name Of Transport" ></asp:TextBox>   
+                          <asp:TextBox ID="txtgstrate" runat="server" class="form-control" placeholder="Enter GST Rate" ></asp:TextBox>
                       </div>
                     </div>
+                      
+                      
                       
     <div class="box-body">
                     <div class="form-group">
@@ -58,19 +59,19 @@
                     <div class="form-group">
                       <div class="col-sm-12" style="text-align:center">
                           <center>
-                          <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" BackColor="White" BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="1px" CellPadding="3" OnRowCommand="GridView1_RowCommand" Width="402px" AllowPaging="True" OnPageIndexChanging="GridView1_PageIndexChanging" PageSize="8">
+                          <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" BackColor="White" BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="1px" CellPadding="3" OnRowCommand="GridView1_RowCommand" Width="402px" AllowPaging="True" OnPageIndexChanging="GridView1_PageIndexChanging" PageSize="8" OnSelectedIndexChanged="GridView1_SelectedIndexChanged">
                               <Columns>
-                                  <asp:BoundField DataField="v_no" HeaderText="Vehicle No" />
-                                  <asp:BoundField DataField="lr_no" HeaderText="LR.NO" />
-                                  <asp:BoundField DataField="n_transport" HeaderText="Name of Transport" />
+                                  <asp:BoundField DataField="Type" HeaderText="Type " />
+                                  <asp:BoundField DataField="Hsncode" HeaderText="HSNCODE" />
+                                  <asp:BoundField DataField="Gstrate" HeaderText="GST Rate" />
                                   <asp:TemplateField HeaderText="Edit">
                                       <ItemTemplate>
-                                          <asp:Button ID="btnedit" runat="server" CommandArgument='<%# Eval("sr") %>' Text="Edit" CommandName="recordedit" />
+                                          <asp:Button ID="btnedit" runat="server" CommandArgument='<%# Eval("Id") %>' Text="Edit" CommandName="recordedit" />
                                       </ItemTemplate>
                                   </asp:TemplateField>
                                   <asp:TemplateField HeaderText="Delete">
                                       <ItemTemplate>
-                                          <asp:Button ID="Button3" runat="server" CommandArgument='<%# Eval("sr") %>' CssClass="col-lg-pull-4" Text="Delete" CommandName="recorddelete" />
+                                          <asp:Button ID="Button3" runat="server" CommandArgument='<%# Eval("Id") %>' CssClass="col-lg-pull-4" Text="Delete" CommandName="recorddelete" />
                                       </ItemTemplate>
                                   </asp:TemplateField>
                               </Columns>
@@ -94,3 +95,4 @@
            
             </div>
 </asp:Content>
+

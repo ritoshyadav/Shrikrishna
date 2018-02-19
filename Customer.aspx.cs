@@ -38,15 +38,16 @@ namespace Shrikrishna
             {
                 Spname = "sp_customer";
                 operation = "insert";
-                SqlParameter[] objsql2 = new SqlParameter[6];
+                SqlParameter[] objsql2 = new SqlParameter[9];
                 objsql2[0] = new SqlParameter("@operation", operation);
                 objsql2[1] = new SqlParameter("@name", txtname.Text);
                 objsql2[2] = new SqlParameter("@address", txtAddress.Text);
                 objsql2[3] = new SqlParameter("@gst_no", Txtgstno.Text);
                 objsql2[4] = new SqlParameter("@email", txtemail.Text);
                 objsql2[5] = new SqlParameter("@contact", Txtcontact.Text);
-
-              
+                objsql2[6] = new SqlParameter("@state", Txtstate.Text);
+                objsql2[7] = new SqlParameter("@statecode", Txtstatecode.Text);
+                objsql2[8] = new SqlParameter("@saddress", txtsupplyaddress.Text);
                 iResult = connection.ExecuteQuery(Spname, objsql2);
                 if (iResult > 0)
                 {
@@ -78,6 +79,9 @@ namespace Shrikrishna
             txtemail.Text = "";
             Txtgstno.Text = "";
             txtname.Text = "";
+            txtsupplyaddress.Text = "";
+            Txtstate.Text = "";
+            Txtstatecode.Text = "";
         }
         private void gridload()
         {
@@ -154,6 +158,14 @@ namespace Shrikrishna
                 {
                     Txtcontact.Text = dt.Rows[0]["contact"].ToString();
                 }
+                if (dt.Rows[0]["state"] != DBNull.Value)
+                {
+                    Txtstate.Text = dt.Rows[0]["state"].ToString();
+                }
+                if (dt.Rows[0]["statecode"] != DBNull.Value)
+                {
+                    Txtstatecode.Text = dt.Rows[0]["statecode"].ToString();
+                }
             }
         }
         private void clearfiled()
@@ -169,7 +181,7 @@ namespace Shrikrishna
         {
             Spname = "sp_customer";
             operation = "update";
-            SqlParameter[] objsql2 = new SqlParameter[7];
+            SqlParameter[] objsql2 = new SqlParameter[10];
             objsql2[0] = new SqlParameter("@operation", operation);
             objsql2[1] = new SqlParameter("@id", Label2.Text);
             objsql2[2] = new SqlParameter("@name", txtname.Text);
@@ -177,8 +189,9 @@ namespace Shrikrishna
             objsql2[4] = new SqlParameter("@gst_no", Txtgstno.Text);
             objsql2[5] = new SqlParameter("@email", txtemail.Text);
             objsql2[6] = new SqlParameter("@contact", Txtcontact.Text);
-
-
+            objsql2[7] = new SqlParameter("@state", Txtstate.Text);
+            objsql2[8] = new SqlParameter("@statecode", Txtstatecode.Text);
+            objsql2[9] = new SqlParameter("@saddress", txtsupplyaddress.Text);
             iResult = connection.ExecuteQuery(Spname, objsql2);
             if (iResult > 0)
             {

@@ -12,13 +12,19 @@ namespace Shrikrishna
 {
     public partial class Sales : System.Web.UI.Page
     {
-        string spname = "",opreation="";
-        int iResult = 0,no=0;
+        string spname = "", opreation = "";int gstrate=0,hsncode=0;
+        int iResult = 0,no=0, pcatsr=0;
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
             {
-                SqlParameter[] objsql = new SqlParameter[1];
+
+            }
+
+
+                if (Session["pws"] != null)
+                {
+                    SqlParameter[] objsql = new SqlParameter[1];
                 DataTable dt = new DataTable();
                 opreation = "loadall";
                 spname = "sp_customer";
@@ -53,22 +59,39 @@ namespace Shrikrishna
                 }
                 Ddlgoodname.Items.Insert(0, new ListItem("--Select Product--", "0"));
 
+                }
+                else
+                {
+                    btnsave.Enabled = false;
+                    btnbill.Enabled = false;
+                    Button2.Enabled = false;
+                }
 
+            
 
-                //     for (int i = 0; i < 101; i++)
-                //{
-                //    Ddlunits.Items.Add(Convert.ToString(i));
-                //}
-                //Ddlunits.Items.Insert(0, new ListItem("--Select QTY --", "0"));
-
-                //< !--asp:DropDownList ID = "Ddlunits" class="form-control" runat="server" palceholder="Chosse Units" AutoPostBack="True" ></!--asp:DropDownList-->   
-
-               
-            }
         }
 
         protected void Button1_Click(object sender, EventArgs e)
         {
+            opreation = "loadhgst";
+            spname = "sp_pcategory";
+            SqlParameter[] objsql2 = new SqlParameter[2];
+            objsql2[0] = new SqlParameter("@operation", opreation);
+            objsql2[1] = new SqlParameter("@sr", Ddlgoodname.SelectedValue);
+            DataTable dt1 = new DataTable();
+            dt1 = connection.GetData(spname, objsql2);
+            if (dt1 != null)
+            {
+                if (dt1.Rows[0]["gstrate"] != DBNull.Value)
+                {
+                    gstrate = Convert.ToInt32(dt1.Rows[0]["gstrate"].ToString());
+                }
+                if (dt1.Rows[0]["hsncode"] != DBNull.Value)
+                {
+                    hsncode = Convert.ToInt32(dt1.Rows[0]["hsncode"].ToString());
+                }
+            }
+            int total = (Convert.ToInt32(Txtrate.Text) * Convert.ToInt32(Txtqty.Text));
             if (btnsave.Text == "ADD")
             {
                 spname = "sptempsale";
@@ -93,47 +116,80 @@ namespace Shrikrishna
 
                 opreation = "insert";
                 spname = "sptempsale";
-                SqlParameter[] objsql1 = new SqlParameter[7];
+                SqlParameter[] objsql1 = new SqlParameter[10];
                 objsql1[0] = new SqlParameter("@operation", opreation);
-                objsql1[1] = new SqlParameter("@pname", Ddlgoodname.SelectedValue);
+                objsql1[1] = new SqlParameter("@pname", Ddlgoodname.SelectedItem.ToString());
                 objsql1[2] = new SqlParameter("@qty", Txtqty.Text);
                 objsql1[3] = new SqlParameter("@unit", Txtunit.Text);
                 objsql1[4] = new SqlParameter("@rate", Txtrate.Text);
                 objsql1[5] = new SqlParameter("@cid", ddlname.SelectedValue);
                 objsql1[6] = new SqlParameter("@id", no);
+                objsql1[7] = new SqlParameter("@total",total);
+              
+                objsql1[8] = new SqlParameter("@hsncode", hsncode);
+                objsql1[9] = new SqlParameter("@gstrate", gstrate);
                 iResult = connection.ExecuteQuery(spname, objsql1);
                 if (iResult > 0)
                 {
                     Label1.Text = "Record Saved";
+                    stopinsert();
 
                 }
                 gridload();
                 newitem();
+
+
 
             }
             else if(btnsave.Text == "Update")
             {
                 opreation = "update";
                 spname = "sptempsale";
-                SqlParameter[] objsql1 = new SqlParameter[7];
+                SqlParameter[] objsql1 = new SqlParameter[10];
                 objsql1[0] = new SqlParameter("@operation", opreation);
 
-                objsql1[1] = new SqlParameter("@pname", Ddlgoodname.SelectedValue);
+                objsql1[1] = new SqlParameter("@pname", Ddlgoodname.SelectedItem.ToString());
                 objsql1[2] = new SqlParameter("@qty", Txtqty.Text);
                 objsql1[3] = new SqlParameter("@unit", Txtunit.Text);
                 objsql1[4] = new SqlParameter("@rate", Txtrate.Text);
                 objsql1[5] = new SqlParameter("@cid", ddlname.SelectedValue);
                 objsql1[6] = new SqlParameter("@id", Label2.Text);
+                objsql1[7] = new SqlParameter("@total",total);
                 
+                objsql1[8] = new SqlParameter("@hsncode", hsncode);
+                objsql1[9] = new SqlParameter("@gstrate", gstrate);
                 iResult = connection.ExecuteQuery(spname, objsql1);
                 if (iResult > 0)
                 {
                     Label1.Text = "Record Update";
                     btnsave.Text = "ADD";
-
+                    stopinsert();
                 }
                 gridload();
                 newitem();
+            }
+        }
+
+        private void stopinsert()
+        {
+           int idcout = 0;
+            SqlParameter[] objsql = new SqlParameter[1];
+            opreation = "stop";
+            spname = "sptempsale";
+            objsql[0] = new SqlParameter("@operation", opreation);
+
+            idcout = connection.ExecuteQuery(spname, objsql);
+            if(idcout >0)
+            {
+                if(idcout==11)
+                {
+                    btnsave.Enabled = false;
+                    Button2.Enabled = false;
+                }
+                else
+                {
+
+                }
             }
         }
         private void gridload()
@@ -172,28 +228,144 @@ namespace Shrikrishna
             Txtunit.Text = "";
         }
 
-        protected void GridView1_RowCommand(object sender, GridViewCommandEventArgs e)
+        
+
+        protected void Ddlgoodname_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (e.CommandName == "recordedit")
+            if (Ddlgoodname.SelectedIndex > 0)
             {
-                perfill(e.CommandArgument.ToString());
-                btnsave.Text = "Update";
-                Label2.Text = e.CommandArgument.ToString();
+                opreation = "loadbykey";
+                spname = "sp_product";
+                SqlParameter[] objsql1 = new SqlParameter[2];
+                objsql1[0] = new SqlParameter("@operation", opreation);
+                objsql1[1] = new SqlParameter("@sr", Ddlgoodname.SelectedValue);
+                DataTable dt = new DataTable();
+                dt = connection.GetData(spname, objsql1);
+                if (dt != null)
+                {
+                    if (dt.Rows[0]["rate"] != DBNull.Value)
+                    {
+                        Txtrate.Text = dt.Rows[0]["rate"].ToString();
+                    }
+                    if (dt.Rows[0]["pcategorysr"] != DBNull.Value)
+                    {
+                        pcatsr = Convert.ToInt32(dt.Rows[0]["pcategorysr"].ToString());
+                    }
+                }
+               
 
             }
-            else if (e.CommandName == "Recorddelete")
+            else
             {
-                opreation = "delete";
-                spname = "sptempsale";
-                SqlParameter[] objsql = new SqlParameter[2];
-                objsql[0] = new SqlParameter("@operation", opreation);
-                objsql[1] = new SqlParameter("@id", e.CommandArgument.ToString());
-                iResult = connection.ExecuteQuery(spname, objsql);
-                if(iResult>0)
+                cleargood();
+            }
+            }
+
+       
+
+        protected void ddlname_SelectedIndexChanged1(object sender, EventArgs e)
+        {
+            if (ddlname.SelectedIndex > 0)
+            {
+                opreation = "loadbykey";
+                spname = "sp_customer";
+                SqlParameter[] objsql1 = new SqlParameter[2];
+                objsql1[0] = new SqlParameter("@operation", opreation);
+                objsql1[1] = new SqlParameter("@id", ddlname.SelectedValue);
+                DataTable dt = new DataTable();
+                dt = connection.GetData(spname, objsql1);
+                if (dt != null)
                 {
-                    Label1.Text = "Record Deleted";
-                    gridload();
+                    if (dt.Rows[0]["address"] != DBNull.Value)
+                    {
+                        txtAddress.Text = dt.Rows[0]["address"].ToString();
+                    }
+                    if (dt.Rows[0]["contact"] != DBNull.Value)
+                    {
+                        Txtcontact.Text = dt.Rows[0]["contact"].ToString();
+                    }
+                    //if (dt.Rows[0]["name"] != DBNull.Value)
+                    //{
+                    //    txtname.Text = dt.Rows[0]["name"].ToString();
+                    //}
+                    if (dt.Rows[0]["gst_no"] != DBNull.Value)
+                    {
+                        Txtgstno.Text = dt.Rows[0]["gst_no"].ToString();
+                    }
+                    if (dt.Rows[0]["email"] != DBNull.Value)
+                    {
+                        txtemail.Text = dt.Rows[0]["email"].ToString();
+                    }
+
                 }
+            }
+            else
+            {
+                clearcust();
+
+            }
+        }
+
+        protected void ddlname_SelectedIndexChanged2(object sender, EventArgs e)
+        {
+           
+        }
+
+        protected void Ddlgoodname_SelectedIndexChanged1(object sender, EventArgs e)
+        {
+            if (Ddlgoodname.SelectedIndex > 0)
+            {
+                opreation = "loadbykey";
+                spname = "sp_product";
+                SqlParameter[] objsql1 = new SqlParameter[2];
+                objsql1[0] = new SqlParameter("@operation", opreation);
+                objsql1[1] = new SqlParameter("@sr", Ddlgoodname.SelectedValue);
+                DataTable dt = new DataTable();
+                dt = connection.GetData(spname, objsql1);
+                if (dt != null)
+                {
+                    if (dt.Rows[0]["rate"] != DBNull.Value)
+                    {
+                        Txtrate.Text = dt.Rows[0]["rate"].ToString();
+                    }
+                    if (dt.Rows[0]["pcategorysr"] != DBNull.Value)
+                    {
+                        pcatsr = Convert.ToInt32(dt.Rows[0]["pcategorysr"].ToString());
+                    }
+                }
+
+
+            }
+        }
+
+        protected void Ddlgoodname_SelectedIndexChanged2(object sender, EventArgs e)
+        {
+            if (Ddlgoodname.SelectedIndex > 0)
+            {
+                opreation = "loadbykey";
+                spname = "sp_product";
+                SqlParameter[] objsql1 = new SqlParameter[2];
+                objsql1[0] = new SqlParameter("@operation", opreation);
+                objsql1[1] = new SqlParameter("@sr", Ddlgoodname.SelectedValue);
+                DataTable dt = new DataTable();
+                dt = connection.GetData(spname, objsql1);
+                if (dt != null)
+                {
+                    if (dt.Rows[0]["rate"] != DBNull.Value)
+                    {
+                        Txtrate.Text = dt.Rows[0]["rate"].ToString();
+                    }
+                    if (dt.Rows[0]["pcategorysr"] != DBNull.Value)
+                    {
+                        pcatsr = Convert.ToInt32(dt.Rows[0]["pcategorysr"].ToString());
+                    }
+                }
+
+
+            }
+            else
+            {
+                cleargood();
             }
         }
 
@@ -240,35 +412,41 @@ namespace Shrikrishna
             }
         }
 
-        protected void Ddlgoodname_SelectedIndexChanged(object sender, EventArgs e)
+        protected void GridView1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (Ddlgoodname.SelectedIndex > 0)
+
+        }
+
+        protected void GridView1_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            if (e.CommandName == "recordedit")
             {
-                opreation = "loadbykey";
-                spname = "sp_product";
-                SqlParameter[] objsql1 = new SqlParameter[2];
-                objsql1[0] = new SqlParameter("@operation", opreation);
-                objsql1[1] = new SqlParameter("@sr", Ddlgoodname.SelectedValue);
-                DataTable dt = new DataTable();
-                dt = connection.GetData(spname, objsql1);
-                if (dt != null)
+                perfill(e.CommandArgument.ToString());
+                btnsave.Text = "Update";
+                Label2.Text = e.CommandArgument.ToString();
+
+            }
+            else if (e.CommandName == "Recorddelete")
+            {
+                opreation = "delete";
+                spname = "sptempsale";
+                SqlParameter[] objsql = new SqlParameter[2];
+                objsql[0] = new SqlParameter("@operation", opreation);
+                objsql[1] = new SqlParameter("@id", e.CommandArgument.ToString());
+                iResult = connection.ExecuteQuery(spname, objsql);
+                if (iResult > 0)
                 {
-                    if (dt.Rows[0]["rate"] != DBNull.Value)
-                    {
-                        Txtrate.Text = dt.Rows[0]["rate"].ToString();
-                    }
+                    Label1.Text = "Record Deleted";
+                    gridload();
                 }
             }
-            else
-            {
-                cleargood();
-            }
-            }
+        }
 
         protected void GridView1_PageIndexChanging(object sender, GridViewPageEventArgs e)
         {
 
         }
+
         private void clearcust()
         {
             txtAddress.Text = "";
@@ -312,7 +490,7 @@ namespace Shrikrishna
                 {
                     spname = "sp_sale";
                     opreation = "insert";
-                    SqlParameter[] objsqlsale = new SqlParameter[7];
+                    SqlParameter[] objsqlsale = new SqlParameter[10];
                     objsqlsale[0] = new SqlParameter("@operation", opreation);
                     objsqlsale[1] = new SqlParameter("@cid",dtall.Rows[i]["cid"].ToString());
                     objsqlsale[2] = new SqlParameter("@pname", dtall.Rows[i]["pname"].ToString());
@@ -320,6 +498,9 @@ namespace Shrikrishna
                     objsqlsale[4] = new SqlParameter("@unit", dtall.Rows[i]["unit"].ToString());
                     objsqlsale[5] = new SqlParameter("@rate", dtall.Rows[i]["rate"].ToString());
                     objsqlsale[6] = new SqlParameter("@bill_no",billno);
+                    objsqlsale[7] = new SqlParameter("@total", dtall.Rows[i]["total"].ToString());
+                    objsqlsale[8] = new SqlParameter("@hsncode", dtall.Rows[i]["hsncode"].ToString());
+                    objsqlsale[9] = new SqlParameter("@gstrate", dtall.Rows[i]["gstrate"].ToString());
                     iResult = connection.ExecuteQuery(spname, objsqlsale);
                     iResult = iResult + 1;
                 }
@@ -334,7 +515,7 @@ namespace Shrikrishna
                 objsqldel[0] = new SqlParameter("@operation", opreation);
                 delrecord = connection.ExecuteQuery(spname, objsqldel);
 
-
+                btnbill.Enabled = false;
             }
             else
             {

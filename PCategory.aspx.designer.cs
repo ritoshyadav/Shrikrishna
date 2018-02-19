@@ -13,6 +13,33 @@ namespace Shrikrishna {
     public partial class PCategory {
         
         /// <summary>
+        /// ddlproductname control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlproductname;
+        
+        /// <summary>
+        /// Txtnewproduct control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox Txtnewproduct;
+        
+        /// <summary>
+        /// ddlsubtype control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlsubtype;
+        
+        /// <summary>
         /// txtproductcategory control.
         /// </summary>
         /// <remarks>
@@ -20,6 +47,15 @@ namespace Shrikrishna {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtproductcategory;
+        
+        /// <summary>
+        /// ddltxttype control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddltxttype;
         
         /// <summary>
         /// txthsncode control.
@@ -31,13 +67,22 @@ namespace Shrikrishna {
         protected global::System.Web.UI.WebControls.TextBox txthsncode;
         
         /// <summary>
-        /// ddlgstrate control.
+        /// txtgstrate control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlgstrate;
+        protected global::System.Web.UI.WebControls.TextBox txtgstrate;
+        
+        /// <summary>
+        /// txtrate control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtrate;
         
         /// <summary>
         /// Label1 control.
