@@ -10,7 +10,7 @@ namespace Shrikrishna
 {
     public class connection
     {
-        public static string strConnection = @"server=DESKTOP-HNC6N8N;database=shrikrishna;uid=sa;pwd=rockpari;Connect Timeout=200;pooling='true';Max Pool Size=500;Min Pool Size=5;";
+        public static string strConnection = @"server=DESKTOP-A1KQ2QV;database=shrikrishna;uid=sa;pwd=rockpari;Connect Timeout=200;pooling='true';Max Pool Size=500;Min Pool Size=5;";
 
         public static int ExecuteQuery(string strSPName, SqlParameter[] objSqlParameter)
         {

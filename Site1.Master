@@ -103,14 +103,10 @@
          
                 <li>
               <a href="PCategory.aspx">
-                <i class="fa  fa-cube"></i> <span>Product Category</span> 
+                <i class="fa  fa-fire"></i> <span>Product Category</span> 
               </a>
             </li>
-              <li>
-              <a href="NProduct.aspx">
-               <i class="fa  fa-fire"> </i> <span>New Product</span> 
-              </a>
-            </li>
+             
                
               <li>
               <a href="VDetails.aspx">
@@ -124,21 +120,21 @@
             </li>
 
             <li>
-              <a href="Sales.aspx">
+              <a href="Sales_List.aspx">
                 <i class="fa  fa-rupee"></i> <span>Sales</span> 
               </a>
             </li>
                 
               <li>
-              <a href="Billing.aspx">
+              <a href="Select_Bill.aspx">
                 <i class="fa fa-print"></i> <span>Billing</span> 
               </a>
             </li>
 
                
               <li>
-              <a href="GSTdetails.aspx">
-                <i class="fa  fa-money"></i> <span>GST Details</span> 
+              <a href="GSTProductDetails.aspx">
+                <i class="fa  fa-cube"></i> <span>Product Type Details</span> 
               </a>
             </li>
 

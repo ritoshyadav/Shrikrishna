@@ -10,43 +10,16 @@
 namespace Shrikrishna {
     
     
-    public partial class VDetails {
+    public partial class Select_Bill {
         
         /// <summary>
-        /// txtvehicelno control.
+        /// Txtbillno control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtvehicelno;
-        
-        /// <summary>
-        /// txtlrno control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtlrno;
-        
-        /// <summary>
-        /// ddlnot1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlnot1;
-        
-        /// <summary>
-        /// Txtnot control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox Txtnot;
+        protected global::System.Web.UI.WebControls.TextBox Txtbillno;
         
         /// <summary>
         /// Label1 control.

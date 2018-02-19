@@ -31,6 +31,15 @@ namespace Shrikrishna {
         protected global::System.Web.UI.WebControls.TextBox txtAddress;
         
         /// <summary>
+        /// txtsupplyaddress control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtsupplyaddress;
+        
+        /// <summary>
         /// Txtgstno control.
         /// </summary>
         /// <remarks>
@@ -56,6 +65,24 @@ namespace Shrikrishna {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox Txtcontact;
+        
+        /// <summary>
+        /// Txtstate control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox Txtstate;
+        
+        /// <summary>
+        /// Txtstatecode control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox Txtstatecode;
         
         /// <summary>
         /// Label1 control.

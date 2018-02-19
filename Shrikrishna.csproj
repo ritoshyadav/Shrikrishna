@@ -60,14 +60,18 @@
   <ItemGroup>
     <Content Include="About.aspx" />
     <Content Include="BIIING.aspx" />
-    <Content Include="Billing.aspx" />
     <Content Include="Customer.aspx" />
     <Content Include="Dashboard.aspx" />
-    <Content Include="GSTdetails.aspx" />
+    <Content Include="GSTProductDetails.aspx" />
     <Content Include="Login.aspx" />
     <Content Include="NProduct.aspx" />
     <Content Include="PCategory.aspx" />
+    <Content Include="PrintBill.aspx" />
+    <Content Include="PrintingBill.aspx" />
+    <Content Include="Sale.aspx" />
     <Content Include="Sales.aspx" />
+    <Content Include="Sales_List.aspx" />
+    <Content Include="Select_Bill.aspx" />
     <Content Include="Setting.aspx" />
     <Content Include="VDetails.aspx" />
     <Content Include="Web.config" />
@@ -88,13 +92,6 @@
     <Compile Include="BIIING.aspx.designer.cs">
       <DependentUpon>BIIING.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Billing.aspx.cs">
-      <DependentUpon>Billing.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Billing.aspx.designer.cs">
-      <DependentUpon>Billing.aspx</DependentUpon>
-    </Compile>
     <Compile Include="connection.cs" />
     <Compile Include="Customer.aspx.cs">
       <DependentUpon>Customer.aspx</DependentUpon>
@@ -110,12 +107,12 @@
     <Compile Include="Dashboard.aspx.designer.cs">
       <DependentUpon>Dashboard.aspx</DependentUpon>
     </Compile>
-    <Compile Include="GSTdetails.aspx.cs">
-      <DependentUpon>GSTdetails.aspx</DependentUpon>
+    <Compile Include="GSTProductDetails.aspx.cs">
+      <DependentUpon>GSTProductDetails.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="GSTdetails.aspx.designer.cs">
-      <DependentUpon>GSTdetails.aspx</DependentUpon>
+    <Compile Include="GSTProductDetails.aspx.designer.cs">
+      <DependentUpon>GSTProductDetails.aspx</DependentUpon>
     </Compile>
     <Compile Include="Login.aspx.cs">
       <DependentUpon>Login.aspx</DependentUpon>
@@ -138,13 +135,47 @@
     <Compile Include="PCategory.aspx.designer.cs">
       <DependentUpon>PCategory.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="PrintBill.aspx.cs">
+      <DependentUpon>PrintBill.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PrintBill.aspx.designer.cs">
+      <DependentUpon>PrintBill.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PrintingBill.aspx.cs">
+      <DependentUpon>PrintingBill.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PrintingBill.aspx.designer.cs">
+      <DependentUpon>PrintingBill.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Sale.aspx.cs">
+      <DependentUpon>Sale.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Sale.aspx.designer.cs">
+      <DependentUpon>Sale.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Sales.aspx.cs">
       <DependentUpon>Sales.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Sales.aspx.designer.cs">
       <DependentUpon>Sales.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Sales_List.aspx.cs">
+      <DependentUpon>Sales_List.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Sales_List.aspx.designer.cs">
+      <DependentUpon>Sales_List.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Select_Bill.aspx.cs">
+      <DependentUpon>Select_Bill.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Select_Bill.aspx.designer.cs">
+      <DependentUpon>Select_Bill.aspx</DependentUpon>
     </Compile>
     <Compile Include="Setting.aspx.cs">
       <DependentUpon>Setting.aspx</DependentUpon>
@@ -178,6 +209,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Site1.Master" />
+    <None Include="Properties\PublishProfiles\SKOP.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -23,7 +23,7 @@
                       </div>
 
                         <div class="form-group">
-                      <label for="inputEmail3" class="col-sm-2 control-label">Product Category</label>
+                      <label for="inputEmail3" class="col-sm-2 control-label">Product GST Type</label>
                       <div class="col-sm-10">
                           <asp:DropDownList ID="ddlpcategory" class="form-control" runat="server" palceholder="Chosse Product Category" OnSelectedIndexChanged="ddlpcategory_SelectedIndexChanged" AutoPostBack="True"  ></asp:DropDownList>
                       </div>

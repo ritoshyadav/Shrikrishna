@@ -1,6 +1,6 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site1.Master" AutoEventWireup="true" CodeBehind="Sales.aspx.cs" Inherits="Shrikrishna.Sales" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site1.Master" AutoEventWireup="true" CodeBehind="Sale.aspx.cs" Inherits="Shrikrishna.Sale" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-    <style type="text/css">
+     <style type="text/css">
         .auto-style1 {
             margin-top: 24px;
         }
@@ -19,7 +19,7 @@
                     <div class="form-group">
                       <label for="inputEmail3" class="col-sm-2 control-label">Name </label>
                       <div class="col-sm-10">
-                          <asp:DropDownList ID="ddlname" class="form-control" runat="server" palceholder="Chosse Product Category" AutoPostBack="True" OnSelectedIndexChanged="ddlname_SelectedIndexChanged"></asp:DropDownList>
+                          <asp:DropDownList ID="ddlname" class="form-control" runat="server" palceholder="Chosse Product Category" AutoPostBack="True" OnSelectedIndexChanged="ddlname_SelectedIndexChanged" ></asp:DropDownList>
                       </div>
                     </div>
                       <div class="form-group">
@@ -59,10 +59,31 @@
                   <h3 class="box-title">Goods Details</h3>
                 </div>
                         <div class="form-group">
-                      <label for="inputEmail3" class="col-sm-2 control-label">Name </label>
+                      <label for="inputEmail3" class="col-sm-2 control-label">Name Of Product </label>
                       <div class="col-sm-10">
-                          
-                        <asp:DropDownList ID="Ddlgoodname" class="form-control" runat="server" palceholder="Chosse Product Category" AutoPostBack="True" OnSelectedIndexChanged="Ddlgoodname_SelectedIndexChanged" ></asp:DropDownList>   
+                          <asp:DropDownList ID="Ddlgoodname" class="form-control" runat="server" palceholder="Chosse Product" AutoPostBack="True" OnSelectedIndexChanged="Ddlgoodname_SelectedIndexChanged" ></asp:DropDownList>
+                           
+                      </div>
+                    </div>
+                      <div class="form-group">
+                      <label for="inputEmail3" class="col-sm-2 control-label">Sub Product Type </label>
+                      <div class="col-sm-10">
+                          <asp:DropDownList ID="ddlsubtype" class="form-control" runat="server" palceholder="Chosse Sub Product Type" AutoPostBack="True" OnSelectedIndexChanged="ddlsubtype_SelectedIndexChanged" ></asp:DropDownList>
+                           
+                      </div>
+                    </div>
+                       <div class="form-group">
+                      <label for="inputEmail3" class="col-sm-2 control-label">Type</label>
+                      <div class="col-sm-10">
+                       <asp:DropDownList ID="ddltxttype" class="form-control" runat="server" palceholder="Chosse GST Rate" AutoPostBack="True" OnSelectedIndexChanged="ddltxttype_SelectedIndexChanged" ></asp:DropDownList>
+                      </div>
+                    </div>
+                      
+                     
+                         <div class="form-group">
+                      <label for="inputEmail3" class="col-sm-2 control-label">Rate</label>
+                      <div class="col-sm-10">
+                        <asp:TextBox ID="Txtrate" runat="server" class="form-control" placeholder="Enter Rate"></asp:TextBox>   
                       </div>
                     </div>
                       <div class="form-group">
@@ -71,23 +92,9 @@
                         <asp:TextBox ID="Txtqty" runat="server" class="form-control" placeholder="Enter Qty"></asp:TextBox>   
                       </div>
                     </div>
-                      <div class="form-group">
-                      <label for="inputEmail3" class="col-sm-2 control-label">Units</label>
-                      <div class="col-sm-10">
-                          
-                        
-                           <asp:TextBox ID="Txtunit" runat="server" class="form-control" placeholder="Enter Unit"></asp:TextBox>
-                      </div>
-                    </div>
-                         <div class="form-group">
-                      <label for="inputEmail3" class="col-sm-2 control-label">Rate</label>
-                      <div class="col-sm-10">
-                        <asp:TextBox ID="Txtrate" runat="server" class="form-control" placeholder="Enter Rate"></asp:TextBox>   
-                      </div>
-                    </div>
-                         
 
-                   
+                       
+                         
 
                       
     <div class="box-body">
@@ -112,6 +119,7 @@
                     <div class="form-group">
                       <div class="col-sm-12" style="text-align:center">
                           <center>
+                          
                               <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" BackColor="White" BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="1px" CellPadding="3" OnRowCommand="GridView1_RowCommand" Width="402px" AllowPaging="True" OnPageIndexChanging="GridView1_PageIndexChanging" PageSize="8" >
                               <Columns>
                                   <asp:BoundField DataField="id" HeaderText="Ser. No" />
@@ -138,6 +146,7 @@
                               <RowStyle ForeColor="#000066" />
                               <SelectedRowStyle BackColor="#669999" Font-Bold="True" ForeColor="White" />
                           </asp:GridView>
+
                               <asp:Label ID="Label2" runat="server"></asp:Label>
                         
                          </center>
@@ -156,11 +165,9 @@
                         <asp:Label ID="Label3" runat="server" Text="" Font-Bold="True" ForeColor="#339933"></asp:Label>
                          
                       </div>
-                         </div>
                 </form>
               </div><!-- /.box -->
               <!-- general form elements disabled -->
            
             </div>
- 
 </asp:Content>
